@@ -141,32 +141,56 @@
         <div class="lg:absolute lg:inset-0 lg:right-0 lg:left-1/2 flex items-center justify-center border-l bg-slate-900/95 p-4 lg:p-6">
             <div class="w-full h-full min-h-0 flex items-center justify-center">
                 <!-- Impact Radar: fyller tillgänglig högerdel -->
-                <div class="aspect-square w-full h-full max-w-full max-h-full min-w-0 min-h-0 relative rounded-xl border border-slate-700/50 bg-slate-900 shadow-[0_0_40px_rgba(16,185,129,0.2)] overflow-visible">
-                    <div class="absolute top-0 left-0 right-0 p-4 lg:p-5 z-10">
+                <div class="aspect-square lg:aspect-auto w-full h-full max-w-full max-h-full min-w-0 min-h-0 relative rounded-xl border border-slate-700/50 bg-slate-900 shadow-[0_0_40px_rgba(16,185,129,0.2)] overflow-hidden flex flex-col p-4 lg:p-5">
+                    <div class="shrink-0">
                         <h3 class="text-base lg:text-lg font-semibold text-white">Maximera din Impact</h3>
                         <p class="text-xs lg:text-sm text-slate-400 mt-1">Din karriär mäts i påverkansradie, inte personalansvar.</p>
                     </div>
-                    <div class="absolute inset-0 flex items-center justify-center pt-14 lg:pt-16">
-                        <!-- Ring 4 (outer) - Bransch -->
-                        <div class="absolute rounded-full border border-emerald-500/20 w-[90%] h-[90%] flex items-start justify-center pt-0">
-                            <span class="absolute -top-0.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-slate-800 border border-emerald-500/30 text-xs lg:text-sm font-medium text-emerald-400 whitespace-nowrap">Bransch</span>
+
+                    <div class="flex-1 min-h-0 flex items-center justify-center py-2">
+                        <div class="relative aspect-square h-full max-h-full max-w-full">
+                            <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="spokeGrad" x1="50" y1="50" x2="24.2" y2="13.1" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#10b981" stop-opacity="0" />
+                                        <stop offset="100%" stop-color="#10b981" stop-opacity="0.9" />
+                                    </linearGradient>
+                                    <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
+                                        <feGaussianBlur stdDeviation="1.4" result="blur" />
+                                        <feMerge>
+                                            <feMergeNode in="blur" />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Rings: Team (innermost) -> Bransch (outermost) -->
+                                <circle cx="50" cy="50" r="15" fill="none" stroke="#10b981" stroke-opacity="0.5" stroke-width="0.6" />
+                                <circle cx="50" cy="50" r="25" fill="none" stroke="#10b981" stroke-opacity="0.38" stroke-width="0.6" />
+                                <circle cx="50" cy="50" r="35" fill="none" stroke="#10b981" stroke-opacity="0.28" stroke-width="0.6" />
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#10b981" stroke-opacity="0.18" stroke-width="0.6" />
+                                <!-- Spoke marking the growth path from Team to Bransch -->
+                                <line x1="50" y1="50" x2="24.2" y2="13.1" stroke="url(#spokeGrad)" stroke-width="0.6" stroke-dasharray="1.2 1.6" stroke-linecap="round" />
+                                <circle cx="41.4" cy="37.7" r="1.5" fill="#6ee7b7" filter="url(#dotGlow)" />
+                                <circle cx="35.7" cy="29.5" r="1.9" fill="#34d399" filter="url(#dotGlow)" />
+                                <circle cx="29.9" cy="21.3" r="2.3" fill="#10b981" filter="url(#dotGlow)" />
+                                <circle cx="24.2" cy="13.1" r="2.7" fill="#059669" filter="url(#dotGlow)" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="rounded-full bg-emerald-500 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-center animate-pulse shadow-[0_0_30px_rgba(16,185,129,0.45)] ring-2 ring-emerald-400/30">
+                                    <span class="text-white text-sm lg:text-base font-semibold">Du</span>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Ring 3 - Impact Solution -->
-                        <div class="absolute rounded-full border border-emerald-500/25 w-[70%] h-[70%] flex items-start justify-center pt-0">
-                            <span class="absolute -top-0.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-slate-800 border border-emerald-500/40 text-xs lg:text-sm font-medium text-emerald-400 whitespace-nowrap">Impact Solution</span>
-                        </div>
-                        <!-- Ring 2 - Produkt -->
-                        <div class="absolute rounded-full border border-emerald-500/30 w-[50%] h-[50%] flex items-start justify-center pt-0">
-                            <span class="absolute -top-0.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-slate-800 border border-emerald-500/50 text-xs lg:text-sm font-medium text-emerald-300 whitespace-nowrap">Produkt</span>
-                        </div>
-                        <!-- Ring 1 (inner) - Team -->
-                        <div class="absolute rounded-full border border-emerald-500/40 w-[30%] h-[30%] flex items-start justify-center pt-0">
-                            <span class="absolute -top-0.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-slate-800 border border-emerald-500/60 text-xs lg:text-sm font-medium text-emerald-300 whitespace-nowrap">Team</span>
-                        </div>
-                        <!-- Center: Du -->
-                        <div class="absolute rounded-full bg-emerald-500 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-center animate-pulse shadow-[0_0_30px_rgba(16,185,129,0.45)] ring-2 ring-emerald-400/30">
-                            <span class="text-white text-sm lg:text-base font-semibold">Du</span>
-                        </div>
+                    </div>
+
+                    <div class="shrink-0 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2 text-[11px] lg:text-xs text-slate-300">
+                        <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-300"></span>Team</span>
+                        <i class="fa-solid fa-chevron-right text-slate-600 text-[9px]"></i>
+                        <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-400"></span>Produkt</span>
+                        <i class="fa-solid fa-chevron-right text-slate-600 text-[9px]"></i>
+                        <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>Impact Solution</span>
+                        <i class="fa-solid fa-chevron-right text-slate-600 text-[9px]"></i>
+                        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-emerald-600"></span>Bransch</span>
                     </div>
                 </div>
             </div>
