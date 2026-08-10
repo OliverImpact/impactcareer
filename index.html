@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact Solution | Karriärvägar & Ramverk</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -87,22 +88,22 @@
                     <span class="text-muted-foreground font-normal hidden sm:inline">| Karriär</span>
                 </div>
                 <div class="hidden sm:flex sm:items-center sm:gap-6">
-                    <button onclick="scrollToSection('overview')" class="nav-item active inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('overview')" data-section="overview" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-compass text-emerald-600"></i> Filosofi
                     </button>
-                    <button onclick="scrollToSection('ladder')" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('ladder')" data-section="ladder" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-layer-group"></i> IC-Trappan
                     </button>
-                    <button onclick="scrollToSection('benchmark')" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('benchmark')" data-section="benchmark" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-code-compare"></i> Benchmark
                     </button>
-                    <button onclick="scrollToSection('archetypes')" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('archetypes')" data-section="archetypes" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-users"></i> Arketyper
                     </button>
-                    <button onclick="scrollToSection('find-profile')" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('find-profile')" data-section="find-profile" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-user-check"></i> Hitta profil
                     </button>
-                    <button onclick="scrollToSection('growth')" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    <button onclick="scrollToSection('growth')" data-section="growth" class="nav-item inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                         <i class="fa-solid fa-chart-line"></i> Utveckling
                     </button>
                 </div>
@@ -116,7 +117,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                 <div class="text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-6">
-                        <i class="fa-solid fa-seedling"></i> Dubbla karriärvägar
+                        <i class="fa-solid fa-code-branch"></i> Dubbla karriärvägar
                     </div>
                     <h1 class="text-4xl tracking-tight font-bold text-foreground sm:text-5xl md:text-6xl">
                         <span class="block">Påverka din karriär</span>
@@ -127,7 +128,7 @@
                     </p>
                     <div class="mt-6 sm:mt-8 flex justify-center lg:justify-start">
                         <button onclick="scrollToSection('ladder')" class="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium btn-primary transition-colors">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Utforska Trappan
+                            <i class="fa-solid fa-arrow-down"></i> Utforska Trappan
                         </button>
                     </div>
                 </div>
@@ -273,7 +274,7 @@
                             <div>
                                 <span id="detail-code" class="inline-flex items-center rounded-md bg-emerald-600 px-2 py-1 text-xs font-medium text-white mb-2">IC1</span>
                                 <h3 id="detail-title" class="text-2xl font-bold">Associate Engineer</h3>
-                                <p id="detail-purpose" class="text-zinc-400 mt-2 text-sm italic">"Build foundational technical capability and system understanding."</p>
+                                <p id="detail-purpose" class="text-zinc-400 mt-2 text-sm italic">"Bygg grundläggande teknisk förmåga och systemförståelse."</p>
                                 <div id="detail-terminal-box" class="hidden mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 flex gap-3 text-blue-800">
                                     <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
                                         <i class="fa-solid fa-anchor"></i>
@@ -300,8 +301,8 @@
                                 </h4>
                                 <ul id="detail-responsibilities" class="list-disc list-outside ml-5 space-y-2 text-sm text-muted-foreground"></ul>
                                 <div class="mt-4 p-3 rounded-lg bg-muted/50">
-                                    <h5 class="text-xs font-medium text-muted-foreground uppercase mb-1">Impact Scope</h5>
-                                    <p id="detail-scope" class="text-sm font-medium text-foreground">Own delivery only</p>
+                                    <h5 class="text-xs font-medium text-muted-foreground uppercase mb-1">Räckvidd</h5>
+                                    <p id="detail-scope" class="text-sm font-medium text-foreground">Individuella uppgifter</p>
                                 </div>
                             </div>
                             <div class="w-full sm:w-1/2 rounded-lg border bg-muted/30 p-4">
@@ -311,12 +312,13 @@
                                 <div class="chart-container" style="height: 200px; max-height: 200px;">
                                     <canvas id="focusChart"></canvas>
                                 </div>
+                                <p id="focus-caption" class="text-center text-xs text-muted-foreground mt-2"></p>
                             </div>
                         </div>
 
                         <div id="detail-mastery-section" class="rounded-lg border bg-muted/30 p-4">
                             <h5 class="text-xs font-medium text-muted-foreground uppercase mb-2 flex items-center gap-1">
-                                <i class="fa-solid fa-layer-group text-emerald-600"></i> Krav på horisontell bredd (Mastery)
+                                <i class="fa-solid fa-arrows-left-right text-emerald-600"></i> Krav på horisontell bredd (Mastery)
                             </h5>
                             <div class="flex gap-2 mb-2" id="detail-mastery-blocks" aria-hidden="true">
                                 <span class="mastery-block h-8 w-8 rounded-md bg-muted flex-shrink-0" data-i="0"></span>
@@ -328,13 +330,13 @@
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="rounded-lg border bg-emerald-50/50 dark:bg-emerald-950/20 p-4 border-emerald-100">
+                            <div class="rounded-lg border bg-emerald-50/50 p-4 border-emerald-100">
                                 <h4 class="font-semibold text-foreground mb-2 flex items-center gap-2"><i class="fa-solid fa-gavel text-emerald-600"></i> Mandat</h4>
-                                <p id="detail-mandate" class="text-sm text-muted-foreground">Begränsat. Fokus på att lära och leverera tilldelade uppgifter.</p>
+                                <p id="detail-mandate" class="text-sm text-muted-foreground">Inga formella mandat. Fokus på lärande.</p>
                             </div>
                             <div class="rounded-lg border bg-muted/30 p-4">
                                 <h4 class="font-semibold text-foreground mb-2 flex items-center gap-2"><i class="fa-solid fa-lightbulb text-emerald-600"></i> Proaktivitet</h4>
-                                <p id="detail-proactivity" class="text-sm text-muted-foreground">Reaktiv inom tilldelat arbete. Dokumenterar och eskalerar blockers.</p>
+                                <p id="detail-proactivity" class="text-sm text-muted-foreground">Reaktiv inom tilldelat arbete.</p>
                             </div>
                         </div>
                     </div>
@@ -660,9 +662,14 @@
                 </div>
             </div>
 
-            <div class="mt-10 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-amber-900">
-                <p class="font-semibold text-sm">Inspirerat av branschpraxis: kumulativa förväntningar</p>
-                <p class="text-sm text-amber-800 mt-1">Bolag som Wise tillämpar en kumulativ logik: en högre nivå adderar nytt ansvar men ersätter inte det gamla — en Tech Lead förväntas fortfarande kunna exekvera som en Senior Engineer. Vi ser det som en sund princip att sträva efter snarare än ett formellt, uttalat krav i vårt nuvarande ramverk.</p>
+            <div class="mt-10 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 flex gap-3 text-amber-900">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+                    <i class="fa-solid fa-building"></i>
+                </span>
+                <div>
+                    <p class="font-semibold text-sm">Inspirerat av branschpraxis: kumulativa förväntningar</p>
+                    <p class="text-sm text-amber-800 mt-1">Bolag som Wise tillämpar en kumulativ logik: en högre nivå adderar nytt ansvar men ersätter inte det gamla — en Tech Lead förväntas fortfarande kunna exekvera som en Senior Engineer. Vi ser det som en sund princip att sträva efter snarare än ett formellt, uttalat krav i vårt nuvarande ramverk.</p>
+                </div>
             </div>
 
             <!-- Vad krävs för nästa steg? -->
@@ -678,127 +685,7 @@
                     <!-- Vertical line (desktop) -->
                     <div class="absolute left-5 top-0 bottom-0 w-px bg-border hidden md:block" aria-hidden="true"></div>
 
-                    <!-- Step 1: IC1 → IC2 -->
-                    <div class="relative flex gap-6 md:gap-8 pb-8 md:pb-10">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">1</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC1</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC2</span>
-                                <span class="text-muted-foreground text-sm ml-1">Associate → Engineer</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Självständighet & ägarskap</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Lösa komplexa uppgifter utan ständig vägledning</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Äga moduler eller delsystem och ta ansvar för deras kvalitet</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Delta aktivt i kodgranskningar och ge konstruktiv feedback</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Stödja IC1-utvecklare och identifiera förbättringar i processen</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: IC2 → IC3 -->
-                    <div class="relative flex gap-6 md:gap-8 pb-8 md:pb-10">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">2</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC2</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC3</span>
-                                <span class="text-muted-foreground text-sm ml-1">Engineer → Senior</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Produktägande & prioritering</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Äga en produkt eller ett större systemområde</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Driva roadmap, prioriteringar och milstolpar</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Aktivt mentorskap (Deliberate Learning) och förmåga att lyfta andra</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Initiera och leda produktmöten, bedöma resursbehov</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Coacha IC1–IC2 och förutse kund- och tekniska behov</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: IC3 → IC4 -->
-                    <div class="relative flex gap-6 md:gap-8 pb-8 md:pb-10">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">3</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC3</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC4</span>
-                                <span class="text-muted-foreground text-sm ml-1">Senior → Tech Lead</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Cross-team & arkitektur</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Bevisad förmåga att hantera horisontell Mastery (behärska flera arketyper)</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Definiera arkitektoniska principer och tekniska standarder</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Koordinera mellan produkter och domäner</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Ledera strategiska tekniska initiativ och hantera systemrisker</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-file-lines text-emerald-500 mt-0.5 shrink-0"></i> Driver RFC:er (Request for Comments) för större tekniska beslut och dokumenterar utfallet i ADR:er (Architecture Decision Records) — det konkreta sättet att visa att du kan hantera en större påverkansradie ansvarsfullt</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Coacha IC3 och höja ingenjörsstandarder i organisationen</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: IC4 → IC5 -->
-                    <div class="relative flex gap-6 md:gap-8 pb-8 md:pb-10">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">4</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC4</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC5</span>
-                                <span class="text-muted-foreground text-sm ml-1">Tech Lead → Staff</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Organisatoriskt ledarskap</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Ledera initiativ med hög påverkan över flera team</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Definiera komplexa problemområden och exekveringsstrategi</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Synka teknik, produkt och affär; bygga skalbara ramverk</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Skapa nya möjligheter för organisationen</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 5: IC5 → IC6 -->
-                    <div class="relative flex gap-6 md:gap-8 pb-8 md:pb-10">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">5</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC5</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC6</span>
-                                <span class="text-muted-foreground text-sm ml-1">Staff → Principal</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Företagsstrategi & auktoritet</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Definiera långsiktig teknisk strategi på företagsnivå</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Rådgeva exekutiv ledning om teknisk inriktning</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Äga organisationsövergripande arkitekturvision</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Representera högsta nivån av teknisk auktoritet</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 6: IC6 → IC7 -->
-                    <div class="relative flex gap-6 md:gap-8">
-                        <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">6</div>
-                        <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">IC6</span>
-                                <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
-                                <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">IC7</span>
-                                <span class="text-muted-foreground text-sm ml-1">Principal → Distinguished</span>
-                            </div>
-                            <h4 class="font-semibold text-foreground mb-2">Branschpåverkan & vision</h4>
-                            <ul class="space-y-1.5 text-sm text-muted-foreground">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Forma teknisk vision bortom organisationen</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Påverka strategisk positionering och ekosystemstandarder</li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i> Representera Impact Solution externt på högsta nivå</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div id="growth-steps-list"></div>
                 </div>
             </div>
 
@@ -996,6 +883,73 @@
 
         const masteryMarginClasses = ['ml-0', 'ml-2 sm:ml-4', 'ml-4 sm:ml-8', 'ml-6 sm:ml-12', 'ml-8 sm:ml-16', 'ml-10 sm:ml-20', 'ml-12 sm:ml-24'];
 
+        // Enda källan för "Vad krävs för nästa steg?"-tidslinjen, renderas av renderGrowthSteps().
+        // RFC/ADR-punkten här hålls i synk med IC4:s responsibilities-post i levels ovan.
+        const growthSteps = [
+            {
+                fromCode: "IC1", toCode: "IC2", pairLabel: "Associate → Engineer",
+                title: "Självständighet & ägarskap",
+                bullets: [
+                    "Lösa komplexa uppgifter utan ständig vägledning",
+                    "Äga moduler eller delsystem och ta ansvar för deras kvalitet",
+                    "Delta aktivt i kodgranskningar och ge konstruktiv feedback",
+                    "Stödja IC1-utvecklare och identifiera förbättringar i processen"
+                ]
+            },
+            {
+                fromCode: "IC2", toCode: "IC3", pairLabel: "Engineer → Senior",
+                title: "Produktägande & prioritering",
+                bullets: [
+                    "Äga en produkt eller ett större systemområde",
+                    "Driva roadmap, prioriteringar och milstolpar",
+                    "Aktivt mentorskap (Deliberate Learning) och förmåga att lyfta andra",
+                    "Initiera och leda produktmöten, bedöma resursbehov",
+                    "Coacha IC1–IC2 och förutse kund- och tekniska behov"
+                ]
+            },
+            {
+                fromCode: "IC3", toCode: "IC4", pairLabel: "Senior → Tech Lead",
+                title: "Cross-team & arkitektur",
+                bullets: [
+                    "Bevisad förmåga att hantera horisontell Mastery (behärska flera arketyper)",
+                    "Definiera arkitektoniska principer och tekniska standarder",
+                    "Koordinera mellan produkter och domäner",
+                    "Ledera strategiska tekniska initiativ och hantera systemrisker",
+                    { icon: "fa-file-lines", text: "Driver RFC:er (Request for Comments) för större tekniska beslut och dokumenterar utfallet i ADR:er (Architecture Decision Records) — det konkreta sättet att visa att du kan hantera en större påverkansradie ansvarsfullt" },
+                    "Coacha IC3 och höja ingenjörsstandarder i organisationen"
+                ]
+            },
+            {
+                fromCode: "IC4", toCode: "IC5", pairLabel: "Tech Lead → Staff",
+                title: "Organisatoriskt ledarskap",
+                bullets: [
+                    "Ledera initiativ med hög påverkan över flera team",
+                    "Definiera komplexa problemområden och exekveringsstrategi",
+                    "Synka teknik, produkt och affär; bygga skalbara ramverk",
+                    "Skapa nya möjligheter för organisationen"
+                ]
+            },
+            {
+                fromCode: "IC5", toCode: "IC6", pairLabel: "Staff → Principal",
+                title: "Företagsstrategi & auktoritet",
+                bullets: [
+                    "Definiera långsiktig teknisk strategi på företagsnivå",
+                    "Rådgeva exekutiv ledning om teknisk inriktning",
+                    "Äga organisationsövergripande arkitekturvision",
+                    "Representera högsta nivån av teknisk auktoritet"
+                ]
+            },
+            {
+                fromCode: "IC6", toCode: "IC7", pairLabel: "Principal → Distinguished",
+                title: "Branschpåverkan & vision",
+                bullets: [
+                    "Forma teknisk vision bortom organisationen",
+                    "Påverka strategisk positionering och ekosystemstandarder",
+                    "Representera Impact Solution externt på högsta nivå"
+                ]
+            }
+        ];
+
         // 12 arketyper fördelade över tre faser i karriären (se Arketyper-dokumentet)
         const archetypesByPhase = {
             fas1: {
@@ -1150,10 +1104,31 @@
             selectPhase('fas1');
             selectProfilePhase('fas1');
             initUserRadarChart();
+            renderGrowthSteps();
+            setupScrollSpy();
         });
+
+        const NAV_SECTION_IDS = ['overview', 'ladder', 'benchmark', 'archetypes', 'find-profile', 'growth'];
+
+        function setActiveNav(id) {
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.section === id);
+            });
+        }
+
+        function setupScrollSpy() {
+            const sections = NAV_SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setActiveNav(entry.target.id);
+                });
+            }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+            sections.forEach(sec => observer.observe(sec));
+        }
 
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            setActiveNav(id);
         }
 
         function renderLevelList() {
@@ -1176,6 +1151,34 @@
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-stone-300"></i>
+                </div>
+            `;
+            }).join('');
+        }
+
+        function renderGrowthSteps() {
+            const container = document.getElementById('growth-steps-list');
+            if (!container) return;
+            container.innerHTML = growthSteps.map((step, i) => {
+                const isLast = i === growthSteps.length - 1;
+                const bullets = step.bullets.map(b => {
+                    const icon = typeof b === 'string' ? 'fa-check' : (b.icon || 'fa-check');
+                    const text = typeof b === 'string' ? b : b.text;
+                    return `<li class="flex items-start gap-2"><i class="fa-solid ${icon} text-emerald-500 mt-0.5 shrink-0"></i> ${text}</li>`;
+                }).join('');
+                return `
+                <div class="relative flex gap-6 md:gap-8 ${isLast ? '' : 'pb-8 md:pb-10'}">
+                    <div class="flex shrink-0 w-10 h-10 rounded-full border-2 border-emerald-500 bg-background flex items-center justify-center text-emerald-600 font-bold text-sm z-10">${i + 1}</div>
+                    <div class="flex-1 min-w-0 rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">${step.fromCode}</span>
+                            <i class="fa-solid fa-arrow-right text-muted-foreground/60 text-xs"></i>
+                            <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium">${step.toCode}</span>
+                            <span class="text-muted-foreground text-sm ml-1">${step.pairLabel}</span>
+                        </div>
+                        <h4 class="font-semibold text-foreground mb-2">${step.title}</h4>
+                        <ul class="space-y-1.5 text-sm text-muted-foreground">${bullets}</ul>
+                    </div>
                 </div>
             `;
             }).join('');
@@ -1237,13 +1240,16 @@
             const ctx = document.getElementById('focusChart').getContext('2d');
             if (focusChartInstance) focusChartInstance.destroy();
 
+            const caption = document.getElementById('focus-caption');
+            if (caption) caption.textContent = `${op}% operativt · ${strat}% strategiskt`;
+
             focusChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['Fokus'],
                     datasets: [
-                        { label: 'Operativt (Göra saker rätt)', data: [op], backgroundColor: '#e5e7eb', borderRadius: 4, barPercentage: 0.6 },
-                        { label: 'Strategiskt (Göra rätt saker)', data: [strat], backgroundColor: '#059669', borderRadius: 4, barPercentage: 0.6 }
+                        { label: 'Operativt («göra saker rätt»)', data: [op], backgroundColor: '#e5e7eb', borderRadius: 4, barPercentage: 0.6, minBarLength: 4 },
+                        { label: 'Strategiskt («göra rätt saker»)', data: [strat], backgroundColor: '#059669', borderRadius: 4, barPercentage: 0.6, minBarLength: 4 }
                     ]
                 },
                 options: {
