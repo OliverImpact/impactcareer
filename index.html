@@ -62,6 +62,12 @@
         .level-card:hover { transform: translateY(-1px); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); }
         .level-card.active { border-left: 3px solid hsl(160 84% 39%); background: hsl(var(--card)); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }
         .archetype-btn.active-archetype { border-color: hsl(160 84% 39%); background: hsl(160 60% 96%); box-shadow: 0 0 0 2px hsl(160 84% 39% / 0.3); }
+        .phase-tab-btn { border-color: hsl(var(--border)); color: hsl(var(--muted-foreground)); background: hsl(var(--card)); }
+        .phase-tab-btn:hover { background: hsl(var(--muted)); }
+        .phase-tab-btn.active-phase { border-color: hsl(160 84% 39%); background: hsl(160 60% 96%); color: hsl(160 84% 25%); font-weight: 600; }
+        .profile-phase-btn { border-color: hsl(var(--border)); color: hsl(var(--muted-foreground)); background: hsl(var(--card)); }
+        .profile-phase-btn:hover { background: hsl(var(--muted)); }
+        .profile-phase-btn.active-phase { border-color: hsl(160 84% 39%); background: hsl(160 60% 96%); color: hsl(160 84% 25%); }
         .btn-primary { background: hsl(160 84% 39%); color: white; }
         .btn-primary:hover { background: hsl(160 84% 34%); }
         .btn-secondary { background: hsl(160 60% 96%); color: hsl(160 84% 25%); border: 1px solid hsl(160 60% 85%); }
@@ -476,64 +482,34 @@
     <!-- Section 3: Archetypes (Interactive Cards) -->
     <section id="archetypes" class="py-16 bg-background border-t">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-foreground flex items-center justify-center gap-2">
                     <i class="fa-solid fa-users text-emerald-600"></i> Icke-linjära Vägar & Arketyper
                 </h2>
                 <p class="mt-4 text-muted-foreground max-w-3xl mx-auto">
-                    Det finns inte bara ett sätt att vara senior utvecklare. Från IC2-nivå uppmuntrar vi dig att hitta din "superkraft" genom fyra huvudarketyper.
+                    Det finns inte bara ett sätt att vara senior utvecklare. Vi har 12 arketyper fördelade över tre faser i karriären — hitta din "superkraft" oavsett var du står idag.
                 </p>
             </div>
 
+            <!-- Phase tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="phase-tabs" role="tablist">
+                <button onclick="selectPhase('fas1')" data-phase="fas1" class="phase-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-seedling"></i> Fas 1 · IC1–IC2 <span class="opacity-70 hidden sm:inline">(Fröna)</span>
+                </button>
+                <button onclick="selectPhase('fas2')" data-phase="fas2" class="phase-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-rocket"></i> Fas 2 · IC3 <span class="opacity-70 hidden sm:inline">(Terminalnivå)</span>
+                </button>
+                <button onclick="selectPhase('fas3')" data-phase="fas3" class="phase-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-chess-knight"></i> Fas 3 · IC4+ <span class="opacity-70 hidden sm:inline">(Strategisk)</span>
+                </button>
+            </div>
+            <p id="phase-description" class="text-center text-sm text-muted-foreground max-w-2xl mx-auto mb-10">
+                Redan från IC2 uppmuntras du att odla dina naturliga styrkor. Dessa fyra "frön" är inte låsta — du kan växla mellan dem baserat på vad som driver dig och vad teamet behöver.
+            </p>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-1 space-y-3">
-                    <button onclick="selectArchetype('builder')" class="archetype-btn w-full text-left p-4 rounded-lg border bg-card hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all active-archetype" data-type="builder">
-                        <div class="flex items-center gap-4">
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
-                                <i class="fa-solid fa-hammer"></i>
-                            </span>
-                            <div>
-                                <h3 class="font-semibold text-foreground">Byggaren</h3>
-                                <p class="text-xs text-muted-foreground">The Builder</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="selectArchetype('architect')" class="archetype-btn w-full text-left p-4 rounded-lg border bg-card hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all" data-type="architect">
-                        <div class="flex items-center gap-4">
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                                <i class="fa-solid fa-bezier-curve"></i>
-                            </span>
-                            <div>
-                                <h3 class="font-semibold text-foreground">Struktören</h3>
-                                <p class="text-xs text-muted-foreground">The Architect</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="selectArchetype('solver')" class="archetype-btn w-full text-left p-4 rounded-lg border bg-card hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all" data-type="solver">
-                        <div class="flex items-center gap-4">
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-600">
-                                <i class="fa-solid fa-fire-extinguisher"></i>
-                            </span>
-                            <div>
-                                <h3 class="font-semibold text-foreground">Problemlösaren</h3>
-                                <p class="text-xs text-muted-foreground">The Solver</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="selectArchetype('business')" class="archetype-btn w-full text-left p-4 rounded-lg border bg-card hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all" data-type="business">
-                        <div class="flex items-center gap-4">
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
-                                <i class="fa-solid fa-handshake"></i>
-                            </span>
-                            <div>
-                                <h3 class="font-semibold text-foreground">Affärspartnern</h3>
-                                <p class="text-xs text-muted-foreground">The Business Partner</p>
-                            </div>
-                        </div>
-                    </button>
+                <div class="lg:col-span-1 space-y-3" id="archetype-list">
+                    <!-- Renderas dynamiskt av renderArchetypeList() -->
                 </div>
 
                 <div class="lg:col-span-2 rounded-xl border bg-card p-6 flex flex-col md:flex-row gap-6 shadow-sm">
@@ -543,6 +519,7 @@
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 flex flex-col justify-center">
+                        <span id="arch-phase-badge" class="inline-flex items-center w-fit rounded-md bg-emerald-100 text-emerald-700 px-2 py-1 text-xs font-medium mb-2">Fas 1 · IC1–IC2</span>
                         <h3 id="arch-title" class="text-2xl font-bold text-foreground mb-2">Byggaren</h3>
                         <p id="arch-desc" class="text-muted-foreground mb-4 text-sm italic">"Jag levererar värde snabbare än någon annan."</p>
                         <div class="space-y-4">
@@ -551,11 +528,11 @@
                                 <p id="arch-focus" class="text-sm font-medium text-foreground mt-1">Leveranshastighet & användarnytta.</p>
                             </div>
                             <div>
-                                <h4 class="text-xs font-medium text-muted-foreground uppercase flex items-center gap-1"><i class="fa-solid fa-person-walking"></i> Beteende (IC2)</h4>
+                                <h4 class="text-xs font-medium text-muted-foreground uppercase flex items-center gap-1"><i class="fa-solid fa-person-walking"></i> Beteendeexempel</h4>
                                 <p id="arch-behavior" class="text-sm text-muted-foreground mt-1">Utmanar user stories för enklare lösningar.</p>
                             </div>
                             <div class="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4 mt-2">
-                                <h4 class="text-xs font-medium text-emerald-700 uppercase flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up"></i> Utvecklas mot (IC4+)</h4>
+                                <h4 class="text-xs font-medium text-emerald-700 uppercase flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up"></i> <span id="arch-evolution-label">Utvecklas mot (IC4+)</span></h4>
                                 <p id="arch-evolution" class="text-sm font-medium text-foreground mt-1">Tech Lead som maximerar teamets velocity.</p>
                             </div>
                         </div>
@@ -573,6 +550,15 @@
                     <i class="fa-solid fa-user-check text-emerald-600"></i> Hitta din profil
                 </h2>
                 <p class="mt-2 text-muted-foreground">Skatta din egen kompetens och se vilken arketyp som matchar dig bäst.</p>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-xs font-medium text-muted-foreground uppercase mb-2">Vilken fas vill du matcha mot?</p>
+                <div class="flex flex-wrap gap-2" id="profile-phase-tabs">
+                    <button onclick="selectProfilePhase('fas1')" data-phase="fas1" class="profile-phase-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors">Fas 1 · IC1–IC2</button>
+                    <button onclick="selectProfilePhase('fas2')" data-phase="fas2" class="profile-phase-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors">Fas 2 · IC3</button>
+                    <button onclick="selectProfilePhase('fas3')" data-phase="fas3" class="profile-phase-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors">Fas 3 · IC4+</button>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1014,53 +1000,145 @@
 
         const masteryMarginClasses = ['ml-0', 'ml-2 sm:ml-4', 'ml-4 sm:ml-8', 'ml-6 sm:ml-12', 'ml-8 sm:ml-16', 'ml-10 sm:ml-20', 'ml-12 sm:ml-24'];
 
-        const archetypes = {
-            builder: {
-                title: "Byggaren",
-                enTitle: "The Builder",
-                desc: "Jag är framgångsrik när teamet levererar värde snabbare än någon annan.",
-                focus: "Leveranshastighet & användarnytta",
-                behavior: "Utmanar user stories för att hitta enklare tekniska lösningar som ger snabbare värde.",
-                evolution: "Affärspartnern eller Tech Lead",
-                color: "rgba(59, 130, 246, 0.5)",
-                borderColor: "rgb(59, 130, 246)",
-                data: [90, 40, 40, 60, 50]
+        // 12 arketyper fördelade över tre faser i karriären (se Arketyper-dokumentet)
+        const archetypesByPhase = {
+            fas1: {
+                builder: {
+                    title: "Byggaren", enTitle: "The Builder", icon: "fa-hammer", iconBg: "bg-blue-100", iconColor: "text-blue-600",
+                    desc: "Jag är framgångsrik när teamet levererar värde snabbare än någon annan.",
+                    focus: "Leveranshastighet & användarnytta",
+                    behavior: "Utmanar user stories för att hitta enklare tekniska lösningar som ger snabbare värde.",
+                    evolution: "Affärspartnern",
+                    color: "rgba(59, 130, 246, 0.5)", borderColor: "rgb(59, 130, 246)",
+                    data: [90, 40, 40, 60, 50]
+                },
+                structurer: {
+                    title: "Struktören", enTitle: "The Structurer", icon: "fa-bezier-curve", iconBg: "bg-purple-100", iconColor: "text-purple-600",
+                    desc: "Jag är framgångsrik när koden är ren, testbar och lätt att underhålla.",
+                    focus: "Kodkvalitet & hållbarhet",
+                    behavior: "Tar initiativ till refaktorering och driver höga standarder i code reviews.",
+                    evolution: "Arkitekten",
+                    color: "rgba(147, 51, 234, 0.5)", borderColor: "rgb(147, 51, 234)",
+                    data: [60, 95, 60, 30, 40]
+                },
+                facilitator: {
+                    title: "Facilitatören", enTitle: "The Facilitator", icon: "fa-people-arrows", iconBg: "bg-amber-100", iconColor: "text-amber-600",
+                    desc: "Jag är framgångsrik när teamet delar kunskap och samarbetar friktionsfritt.",
+                    focus: "Kunskapsdelning & samarbete",
+                    behavior: "Skriver utmärkt dokumentation och är den som naturligt hjälper nyanställda.",
+                    evolution: "Multiplikatorn",
+                    color: "rgba(217, 119, 6, 0.5)", borderColor: "rgb(217, 119, 6)",
+                    data: [50, 30, 85, 30, 20]
+                },
+                detective: {
+                    title: "Detektiven", enTitle: "The Detective", icon: "fa-magnifying-glass", iconBg: "bg-slate-200", iconColor: "text-slate-700",
+                    desc: "Jag ger mig inte förrän grundorsaken är funnen.",
+                    focus: "Felsökning & systemförståelse",
+                    behavior: "Gräver djupt i komplexa buggar och prestandaproblem som andra undviker.",
+                    evolution: "Problemlösaren",
+                    color: "rgba(71, 85, 105, 0.5)", borderColor: "rgb(71, 85, 105)",
+                    data: [70, 60, 20, 20, 90]
+                }
             },
-            architect: {
-                title: "Struktören",
-                enTitle: "The Architect",
-                desc: "Jag är framgångsrik när koden är ren, testbar och lätt att underhålla.",
-                focus: "Kodkvalitet & hållbarhet",
-                behavior: "Refaktoriserar proaktivt och sätter upp CI/CD-pipelines.",
-                evolution: "Tech Lead eller Staff Engineer",
-                color: "rgba(147, 51, 234, 0.5)",
-                borderColor: "rgb(147, 51, 234)",
-                data: [60, 95, 60, 30, 40]
+            fas2: {
+                productOwner: {
+                    title: "Produktägaren", enTitle: "The Product Driver", icon: "fa-map", iconBg: "bg-sky-100", iconColor: "text-sky-600",
+                    desc: "Jag äger roadmapen och prioriterar utifrån affärsvärde.",
+                    focus: "Roadmap, prioritering & affärsvärde",
+                    behavior: "Leder produktmöten och prioriterar enligt befintligt ramverk.",
+                    evolution: "Affärspartnern",
+                    color: "rgba(14, 165, 233, 0.5)", borderColor: "rgb(14, 165, 233)",
+                    data: [40, 40, 50, 90, 40]
+                },
+                qualityChampion: {
+                    title: "Kvalitetsstjärnan", enTitle: "The Quality Champion", icon: "fa-shield-halved", iconBg: "bg-purple-100", iconColor: "text-purple-600",
+                    desc: "Jag är grindvakten som ser till att kortsiktiga beslut inte raserar arkitekturen.",
+                    focus: "Systemets hälsa & långsiktig arkitektur",
+                    behavior: "Agerar grindvakt och håller emot produktbeslut som skadar systemet på sikt.",
+                    evolution: "Arkitekten",
+                    color: "rgba(147, 51, 234, 0.5)", borderColor: "rgb(147, 51, 234)",
+                    data: [60, 90, 40, 30, 50]
+                },
+                mentor: {
+                    title: "Mentorn", enTitle: "The People Catalyst", icon: "fa-chalkboard-user", iconBg: "bg-amber-100", iconColor: "text-amber-600",
+                    desc: "Jag är framgångsrik när jag höjer teamets kollektiva förmåga.",
+                    focus: "Coaching & kunskapsspridning",
+                    behavior: "Dedikerar betydande tid åt att coacha IC1–IC2 och driver tech-talks.",
+                    evolution: "Multiplikatorn",
+                    color: "rgba(217, 119, 6, 0.5)", borderColor: "rgb(217, 119, 6)",
+                    data: [40, 40, 95, 40, 30]
+                },
+                specialist: {
+                    title: "Systemspecialisten", enTitle: "The Deep Specialist", icon: "fa-microscope", iconBg: "bg-rose-100", iconColor: "text-rose-600",
+                    desc: "Jag är det interna oraklet för min nisch.",
+                    focus: "Djup teknisk specialisering",
+                    behavior: "Äger den djupaste tekniska kunskapen inom ett ramverk, en databas eller säkerhetsaspekt.",
+                    evolution: "Problemlösaren",
+                    color: "rgba(220, 38, 38, 0.5)", borderColor: "rgb(220, 38, 38)",
+                    data: [85, 70, 30, 20, 60]
+                }
             },
-            solver: {
-                title: "Problemlösaren",
-                enTitle: "The Solver",
-                desc: "Ingen utmaning är för komplex för att benas ut.",
-                focus: "Kritisk exekvering & teknisk risk",
-                behavior: "Går in i högprioriterade, komplexa projekt eller akuta kriser.",
-                evolution: "Principal Engineer",
-                color: "rgba(220, 38, 38, 0.5)",
-                borderColor: "rgb(220, 38, 38)",
-                data: [80, 70, 30, 40, 95]
-            },
-            business: {
-                title: "Affärspartnern",
-                enTitle: "The Business Partner",
-                desc: "Tekniken är vårt främsta verktyg för att nå affärsmålen.",
-                focus: "Strategisk alignment",
-                behavior: "Fungerar som teknisk rådgivare till produktledning.",
-                evolution: "Staff/Principal eller Management",
-                color: "rgba(5, 150, 105, 0.5)",
-                borderColor: "rgb(5, 150, 105)",
-                data: [40, 50, 70, 90, 50]
+            fas3: {
+                architect: {
+                    title: "Arkitekten", enTitle: "The Architect", icon: "fa-drafting-compass", iconBg: "bg-purple-100", iconColor: "text-purple-600",
+                    desc: "Vi bygger rätt för att kunna växa imorgon.",
+                    focus: "Systemisk hälsa & skalbarhet",
+                    behavior: "Designar lösningar över flera produktområden och sätter de tekniska ramverken alla team följer.",
+                    evolution: "Ägs av rollen själv (Staff/Principal)",
+                    color: "rgba(147, 51, 234, 0.5)", borderColor: "rgb(147, 51, 234)",
+                    data: [50, 95, 40, 50, 40]
+                },
+                multiplier: {
+                    title: "Multiplikatorn", enTitle: "The Advocate / Multiplier", icon: "fa-people-group", iconBg: "bg-amber-100", iconColor: "text-amber-600",
+                    desc: "Jag är framgångsrik när teamen runt mig blir mer effektiva.",
+                    focus: "Ingenjörskultur & kompetenshöjning",
+                    behavior: "Driver communities of practice, sätter standarder för test/deploy och coachar seniora kollegor.",
+                    evolution: "Ägs av rollen själv (Staff/Principal)",
+                    color: "rgba(217, 119, 6, 0.5)", borderColor: "rgb(217, 119, 6)",
+                    data: [40, 50, 90, 50, 30]
+                },
+                solver: {
+                    title: "Problemlösaren", enTitle: "The Solver", icon: "fa-fire-extinguisher", iconBg: "bg-rose-100", iconColor: "text-rose-600",
+                    desc: "Ingen utmaning är för komplex för att benas ut.",
+                    focus: "Kritisk exekvering & teknisk risk",
+                    behavior: "Går in i högprioriterade, komplexa projekt eller akuta kriser.",
+                    evolution: "Ägs av rollen själv (Staff/Principal)",
+                    color: "rgba(220, 38, 38, 0.5)", borderColor: "rgb(220, 38, 38)",
+                    data: [80, 70, 30, 40, 95]
+                },
+                business: {
+                    title: "Affärspartnern", enTitle: "The Business Partner", icon: "fa-handshake", iconBg: "bg-emerald-100", iconColor: "text-emerald-600",
+                    desc: "Tekniken är vårt främsta verktyg för att nå affärsmålen.",
+                    focus: "Strategisk alignment mellan tech och business",
+                    behavior: "Fungerar som teknisk rådgivare till produktledning och exekutiv ledning.",
+                    evolution: "Ägs av rollen själv (Staff/Principal)",
+                    color: "rgba(5, 150, 105, 0.5)", borderColor: "rgb(5, 150, 105)",
+                    data: [40, 50, 70, 90, 50]
+                }
             }
         };
 
+        const phaseMeta = {
+            fas1: {
+                label: "Fas 1 · IC1–IC2",
+                description: "Redan från IC2 uppmuntras du att odla dina naturliga styrkor. Dessa fyra \"frön\" är inte låsta — du kan växla mellan dem baserat på vad som driver dig och vad teamet behöver.",
+                evolutionLabel: "Utvecklas mot (IC4+)"
+            },
+            fas2: {
+                label: "Fas 2 · IC3 (Terminalnivå)",
+                description: "IC3 är en terminalnivå — man kan stanna här hela karriären och ha en välbetald, framgångsrik roll. Dessa fyra arketyper ger variation och löneutveckling utan formell befordran.",
+                evolutionLabel: "Kan utvecklas vidare mot (IC4+)"
+            },
+            fas3: {
+                label: "Fas 3 · IC4+ (Strategisk)",
+                description: "Från Tech Lead och uppåt handlar det inte längre om egen kodproduktion, utan om att skala teknologi och kompetens över flera domäner via en multiplikatoreffekt.",
+                evolutionLabel: "Kärnansvar"
+            }
+        };
+
+        let currentPhase = 'fas1';
+        let currentArchetypeKey = 'builder';
+        let profilePhase = 'fas1';
         let currentLevelIndex = 0;
         let focusChartInstance = null;
         let radarChartInstance = null;
@@ -1073,7 +1151,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderLevelList();
             loadLevel(0);
-            initRadarChart('builder');
+            selectPhase('fas1');
+            selectProfilePhase('fas1');
             initUserRadarChart();
         });
 
@@ -1187,29 +1266,63 @@
             });
         }
 
+        function renderArchetypeList(phase) {
+            const container = document.getElementById('archetype-list');
+            const entries = Object.entries(archetypesByPhase[phase]);
+            container.innerHTML = entries.map(([key, arch], i) => `
+                <button onclick="selectArchetype('${key}')" class="archetype-btn w-full text-left p-4 rounded-lg border bg-card hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all ${i === 0 ? 'active-archetype' : ''}" data-type="${key}">
+                    <div class="flex items-center gap-4">
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${arch.iconBg} ${arch.iconColor}">
+                            <i class="fa-solid ${arch.icon}"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-semibold text-foreground">${arch.title}</h3>
+                            <p class="text-xs text-muted-foreground">${arch.enTitle}</p>
+                        </div>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        function selectPhase(phase) {
+            currentPhase = phase;
+            document.querySelectorAll('.phase-tab-btn').forEach(b => {
+                b.classList.toggle('active-phase', b.dataset.phase === phase);
+            });
+            document.getElementById('phase-description').innerText = phaseMeta[phase].description;
+            document.getElementById('arch-evolution-label').innerText = phaseMeta[phase].evolutionLabel;
+            renderArchetypeList(phase);
+            const firstKey = Object.keys(archetypesByPhase[phase])[0];
+            selectArchetype(firstKey);
+        }
+
         function selectArchetype(type) {
-            const arch = archetypes[type];
+            currentArchetypeKey = type;
+            const arch = archetypesByPhase[currentPhase][type];
+            if (!arch) return;
 
             document.querySelectorAll('.archetype-btn').forEach(b => {
                 b.classList.remove('active-archetype');
                 if (b.dataset.type === type) b.classList.add('active-archetype');
             });
 
+            document.getElementById('arch-phase-badge').innerText = phaseMeta[currentPhase].label;
             document.getElementById('arch-title').innerText = arch.title;
             document.getElementById('arch-desc').innerText = `"${arch.desc}"`;
             document.getElementById('arch-focus').innerText = arch.focus;
             document.getElementById('arch-behavior').innerText = arch.behavior;
             document.getElementById('arch-evolution').innerText = arch.evolution;
 
+            if (!radarChartInstance) initRadarChart();
             updateRadarChart(arch);
         }
 
-        function initRadarChart(defaultType) {
+        function initRadarChart() {
             const ctx = document.getElementById('archetypeRadar').getContext('2d');
             radarChartInstance = new Chart(ctx, {
                 type: 'radar',
                 data: {
-                    labels: ['Kodning/Exekvering', 'Systemarkitektur', 'Mentorskap/People', 'Affärsförståelse', 'Krishantering'],
+                    labels: RADAR_LABELS,
                     datasets: []
                 },
                 options: {
@@ -1226,7 +1339,6 @@
                     plugins: { legend: { display: false } }
                 }
             });
-            selectArchetype(defaultType);
         }
 
         function updateRadarChart(arch) {
@@ -1301,8 +1413,9 @@
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(16, 185, 129)'
             }];
-            if (showArchetypeOverlay && lastAnalyzedArchetype && archetypes[lastAnalyzedArchetype]) {
-                const arch = archetypes[lastAnalyzedArchetype];
+            const overlayArch = lastAnalyzedArchetype ? archetypesByPhase[profilePhase][lastAnalyzedArchetype] : null;
+            if (showArchetypeOverlay && overlayArch) {
+                const arch = overlayArch;
                 datasets.push({
                     label: arch.title,
                     data: arch.data,
@@ -1319,12 +1432,24 @@
             userRadarChartInstance.update();
         }
 
+        function selectProfilePhase(phase) {
+            profilePhase = phase;
+            document.querySelectorAll('.profile-phase-btn').forEach(b => {
+                b.classList.toggle('active-phase', b.dataset.phase === phase);
+            });
+            // Fasbyte gör tidigare matchning inaktuell tills man analyserar igen
+            lastAnalyzedArchetype = null;
+            const box = document.getElementById('profile-result-box');
+            if (box) box.classList.add('hidden');
+            updateUserRadarChart(false);
+        }
+
         function getNearestArchetype() {
-            const types = ['builder', 'architect', 'solver', 'business'];
+            const types = Object.keys(archetypesByPhase[profilePhase]);
             let best = null;
             let bestDist = Infinity;
             for (const type of types) {
-                const data = archetypes[type].data;
+                const data = archetypesByPhase[profilePhase][type].data;
                 let sumSq = 0;
                 for (let i = 0; i < 5; i++) sumSq += (userProfile[i] - data[i]) ** 2;
                 const dist = Math.sqrt(sumSq);
@@ -1340,13 +1465,12 @@
             const nearestType = getNearestArchetype();
             if (!nearestType) return;
             lastAnalyzedArchetype = nearestType;
-            const arch = archetypes[nearestType];
-            selectArchetype(nearestType);
+            const arch = archetypesByPhase[profilePhase][nearestType];
             const box = document.getElementById('profile-result-box');
             const titleEl = document.getElementById('profile-result-title');
             const descEl = document.getElementById('profile-result-desc');
             if (box && titleEl && descEl) {
-                titleEl.textContent = `Du är mest lik ${arch.title}!`;
+                titleEl.textContent = `Du är mest lik ${arch.title} (${phaseMeta[profilePhase].label})!`;
                 descEl.textContent = arch.desc + ' ' + (arch.focus ? 'Fokus: ' + arch.focus + '.' : '');
                 box.classList.remove('hidden');
             }
