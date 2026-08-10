@@ -326,13 +326,13 @@
                                 <span class="mastery-block h-8 w-8 rounded-md bg-muted flex-shrink-0" data-i="2"></span>
                                 <span class="mastery-block h-8 w-8 rounded-md bg-muted flex-shrink-0" data-i="3"></span>
                             </div>
-                            <p id="detail-mastery-text" class="text-sm text-muted-foreground">För att nå denna nivå krävs demonstrerad excellens inom 1 av våra 4 arketyper.</p>
+                            <p id="detail-mastery-text" class="text-sm text-muted-foreground">För att nå denna nivå krävs demonstrerad excellens inom 0 av våra 4 arketyper. På denna nivå utforskar du vilka områden du trivs i och vill utvecklas vidare inom.</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="rounded-lg border bg-emerald-50/50 p-4 border-emerald-100">
                                 <h4 class="font-semibold text-foreground mb-2 flex items-center gap-2"><i class="fa-solid fa-gavel text-emerald-600"></i> Mandat</h4>
-                                <p id="detail-mandate" class="text-sm text-muted-foreground">Inga formella mandat. Fokus på lärande.</p>
+                                <p id="detail-mandate" class="text-sm text-muted-foreground">Bidrar inom sitt område. Fokus på lärande.</p>
                             </div>
                             <div class="rounded-lg border bg-muted/30 p-4">
                                 <h4 class="font-semibold text-foreground mb-2 flex items-center gap-2"><i class="fa-solid fa-lightbulb text-emerald-600"></i> Proaktivitet</h4>
@@ -749,11 +749,11 @@
                     "Eskalerar blockeringar tidigt och dokumenterar arbete.",
                     "Fokuserar på att lära sig stacken och domänen."
                 ],
-                mandate: "Inga formella mandat. Fokus på lärande.",
+                mandate: "Bidrar inom sitt område. Fokus på lärande.",
                 proactivity: "Reaktiv inom tilldelat arbete.",
                 operational: 90,
                 strategic: 10,
-                masteryBlocks: 1
+                masteryBlocks: 0
             },
             {
                 code: "IC2",
@@ -1230,8 +1230,9 @@
                     el.classList.add('bg-emerald-500');
                 }
             });
-            document.getElementById('detail-mastery-text').innerText =
-                `För att nå denna nivå krävs demonstrerad excellens inom ${blocksRequired} av våra 4 arketyper.`;
+            document.getElementById('detail-mastery-text').innerText = blocksRequired === 0
+                ? `För att nå denna nivå krävs demonstrerad excellens inom 0 av våra 4 arketyper. På denna nivå utforskar du vilka områden du trivs i och vill utvecklas vidare inom.`
+                : `För att nå denna nivå krävs demonstrerad excellens inom ${blocksRequired} av våra 4 arketyper.`;
 
             updateFocusChart(lvl.operational, lvl.strategic);
         }
